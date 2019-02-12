@@ -12,7 +12,7 @@ export class DataStorageService {
 	storeRecipes() {
 		const req = new HttpRequest(
 				'PUT',
-				'https://angi-21aaf.firebaseio.com/recipes.json',
+				null,
 				this.recipeService.getRecipes(),
 				{
 					reportProgress: true
@@ -23,7 +23,7 @@ export class DataStorageService {
 	}
 
 	fetchRecipes() {
-		this.httpClient.get<Recipe[]>('https://angi-21aaf.firebaseio.com/recipes.json').map(recipes => {
+		this.httpClient.get<Recipe[]>(null).map(recipes => {
 			for (let recipe of recipes) {
 				recipe.ingredients = recipe.ingredients ? recipe.ingredients : [];
 			}
